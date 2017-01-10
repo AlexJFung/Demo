@@ -21,7 +21,7 @@ body {
 #container {
 	width: 300px;
 	height: 500px;
-	background: url('icons/placeholder7.png');
+	background-image: url('icons/placeholder7.png');
 	padding: 30px;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
