@@ -32,6 +32,15 @@ body {
 	/*background-position: -100px -300px;*/
 }
 
+.footer {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	text-align: center;
+}
+
 /*.box {
 	width: 60px;
 	height: 60px;

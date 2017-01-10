@@ -69,8 +69,7 @@ $(document).ready(function() {
 			$('#container').css({'background-image':'url(icons/placeholder2.png)'});
 		}else if(xA <= -3){
 			$('#container').css({'background-image':'url(icons/placeholder6.png)'});
-		}
-		else {
+		}else {
 			$('#container').css({'background-image':'url(icons/placeholder7.png)'});
 		}
 
