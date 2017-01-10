@@ -26,6 +26,8 @@ $(document).ready(function() {
 		    xA = -(accX / 10) * movement;
 		    yA = -(accY / 10) * movement;
 
+				document.getElementById("alpha").innerHTML = accX;
+				document.getElementById("beta").innerHTML = accY;
 
 			run();
 
