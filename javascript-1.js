@@ -26,6 +26,11 @@ $(document).ready(function() {
 		    xA = -(accX / 10) * movement;
 		    yA = -(accY / 10) * movement;
 
+			run();
+
+		}
+
+		window.deviceorientation = function(event) {
 				var alpha = Math.round(event.alpha);
 				var beta = Math.round(event.beta);
 				var gamma = Math.round(event.gamma);
@@ -33,8 +38,7 @@ $(document).ready(function() {
 				document.getElementById("alpha").innerHTML = alpha;//accX;
 				document.getElementById("beta").innerHTML = beta;//accY;
 
-			run();
-
+				run();
 		}
 
 	} else {
