@@ -57,9 +57,20 @@ $(document).ready(function() {
 
 	function run() {
 
-		if(xA >= 5){
+		if(xA >= 3){
 			$('#container').css({'background-image':'url(icons/placeholder5.png)'});
-		}else {
+		}else if(yA >= 5){
+			$('#container').css({'background-image':'url(icons/placeholder3.png)'});
+		}else if(yA <= -5){
+			$('#container').css({'background-image':'url(icons/placeholder1.png)'});
+		}else if(xA <= -3){
+			$('#container').css({'background-image':'url(icons/placeholder4.png)'});
+		}else if(xA >= 7){
+			$('#container').css({'background-image':'url(icons/placeholder2.png)'});
+		}else if(xA <= -7){
+			$('#container').css({'background-image':'url(icons/placeholder6.png)'});
+		}
+		else {
 			$('#container').css({'background-image':'url(icons/placeholder7.png)'});
 		}
 
