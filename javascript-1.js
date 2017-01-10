@@ -58,7 +58,7 @@ $(document).ready(function() {
 	function run() {
 
 		if(xA >= 5){
-			$('#container').css("background","url('icons/placeholder5.png')");
+			$('#container').css({"background":"url('icons/placeholder5.png')"});
 		}
 
 	    //$('.box').css({'left' : xA+'px', 'top' : yA+'px', 'box-shadow' : ''+xA+'px '+yA+'px 10px rgba(0,0,0,0.3)'});
