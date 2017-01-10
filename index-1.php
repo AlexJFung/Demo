@@ -15,35 +15,35 @@
 <body>
 
 <div id="container">
-	<!-- <div class='box'>
-
-	</div>
-
 	<div class='box'>
-
+	
 	</div>
-
+	
 	<div class='box'>
-
+	
 	</div>
-
+	
 	<div class='box'>
-
+	
 	</div>
-
-  <div class='box'>
-
-	</div>
-
+	
 	<div class='box'>
-
-	</div> -->
+	
+	</div>
+	
+	<div class='box'>
+	
+	</div>
+	
+	<div class='box'>
+	
+	</div>
 </div>
 
 <div class='content tk-museo-sans'>
 	<h1>Hey! This Only Works on Mobiles</h1>
 	<p>And you're not on a mobile device! Don't worry though, hover over the box on the left to get a vibe for what this effect looks like. The only difference is this would be accomplished on mobiles by moving the device. (i.e. using the accelerometer)</p>
-	<a class='c' href="index.html">Example 1</a>
+	<a class='c' href="index-1.php">Example 1</a>
 	<a class='ex' href="index-2.php">Example 2</a>
 </div>
 
