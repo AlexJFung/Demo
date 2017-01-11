@@ -26,45 +26,19 @@ $(document).ready(function() {
 		    xA = -(accX / 10) * movement;
 		    yA = -(accY / 10) * movement;
 
+				document.getElementById("X").innerHTML = accX;
+				document.getElementById("Y").innerHTML = accY;
+
 			run();
-
-		}
-
-		window.deviceorientation = function(event) {
-				var alpha = Math.round(event.alpha);
-				var beta = Math.round(event.beta);
-				var gamma = Math.round(event.gamma);
-
-				document.getElementById("alpha").innerHTML = alpha;//accX;
-				document.getElementById("beta").innerHTML = beta;//accY;
-
-				run();
 		}
 
 	} else {
 
 		$('.content').show();
 
-		$('#container').addClass('fullscreen').mousemove(function(e) {
-
-			width = $(this).width();
-			height = $(this).height();
-
-			accX = (((e.pageX - this.offsetLeft)*2 / width) * 10) - 10;
-			accY = (((e.pageY - this.offsetTop)*2 / width) * 10) - 10;
-
-			xA = -(accX / 10);
-		    yA = -(accY / 10);
-
-		    movement = 2;
-
-			run();
-
-		});
-
-
+		$('#container').addClass('fullscreen');
 	}
-
+	
 	function run() {
 
 		if(xA >= 7){
@@ -82,13 +56,6 @@ $(document).ready(function() {
 		}else {
 			$('#container').css({'background-image':'url(icons/placeholder7.png)'});
 		}
-
-	    //$('.box').css({'left' : xA+'px', 'top' : yA+'px', 'box-shadow' : ''+xA+'px '+yA+'px 10px rgba(0,0,0,0.3)'});
-
-	    //bX = -(xA*2)-100;
-	    //bY = -(yA*2)-300;
-
-	    //$('#container').css({'background-position' : bX+'px '+bY+'px'});
 
 	}
 
