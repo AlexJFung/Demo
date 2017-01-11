@@ -43,6 +43,10 @@ body {
 	text-align: center;
 }
 
+table {
+	table-layout: fixed;
+}
+
 /*.box {
 	width: 60px;
 	height: 60px;
