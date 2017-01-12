@@ -12,15 +12,17 @@
 <script src='javascript-1.js'></script>
 
 <script>
-var session = {
-  audio: true,
-  video: false
-};
-var recordRTC = null;
-navigator.getUserMedia(session, function (mediaStream) {
-  recordRTC = RecordRTC(MediaStream);
-  recordRTC.startRecording();
-}, onError);
+  var errorCallback = function(e) {
+    console.log('Permission Rejected', e);
+  };
+  navigator.getUserMedia({video: false, audio: true}, function(localMediaStream) {
+    // var video = document.querySelector('video');
+    // video.src = window.URL.createObjectURL(localMediaStream);
+    // video.onloadedmetadata = function(e) {
+    // };
+		console.log(localMediaStream.active);
+		alert(localMediaStream.active);
+  }, errorCallback);
 </script>
 
 <script src="speech.1.0.0.js" type="text/javascript"></script>
