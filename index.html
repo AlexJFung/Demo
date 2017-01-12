@@ -15,6 +15,7 @@
   var errorCallback = function(e) {
     console.log('Permission Rejected', e);
   };
+
   navigator.getUserMedia({video: false, audio: true}, function(localMediaStream) {
     // var video = document.querySelector('video');
     // video.src = window.URL.createObjectURL(localMediaStream);
@@ -54,7 +55,7 @@
         var mode = getMode();
 
         clearText();
-
+				setText('Listening...');
         client = Microsoft.CognitiveServices.SpeechRecognition.SpeechRecognitionServiceFactory.createMicrophoneClient(
             mode,
             getLanguage(),
@@ -62,14 +63,18 @@
 
         client.startMicAndRecognition();
         setTimeout(function () {
+						clearText();
+						setText('Transcribing...');
             client.endMicAndRecognition();
         }, 5000);
 
         client.onPartialResponseReceived = function (response) {
+						clearText();
             setText(response);
         }
 
         client.onFinalResponseReceived = function (response) {
+						clearText();
             setText(JSON.stringify(response));
         }
     }
