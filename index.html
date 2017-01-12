@@ -11,8 +11,12 @@
 <script src='jquery.js'></script>
 <script src='javascript-1.js'></script>
 
-<script>
-  var errorCallback = function(e) {
+<script src="speech.1.0.0.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var client;
+    var request;
+   
+    var errorCallback = function(e) {
     console.log('Permission Rejected', e);
   };
   navigator.getUserMedia({video: false, audio: true}, function(localMediaStream) {
@@ -23,24 +27,7 @@
 		console.log(localMediaStream.active);
 		alert(localMediaStream.active);
   }, errorCallback);
-</script>
-
-<script src="speech.1.0.0.js" type="text/javascript"></script>
-<script type="text/javascript">
-    var client;
-    var request;
-
-	function hasGetUserMedia() {
-  			return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
-            navigator.mozGetUserMedia || navigator.msGetUserMedia);
-					}
-
-					if (hasGetUserMedia()) {
-  				// Good to go!
-				} else {
-  			alert('getUserMedia() is not supported in your browser');
-				}
-	
+  
     function getMode() {
         return Microsoft.CognitiveServices.SpeechRecognition.SpeechRecognitionMode.shortPhrase;
     }
