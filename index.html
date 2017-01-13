@@ -15,7 +15,7 @@
 <script type="text/javascript">
     var client;
     var request;
-   
+
     var errorCallback = function(e) {
     console.log('Permission Rejected', e);
   };
@@ -27,10 +27,13 @@
 		console.log(localMediaStream.active);
 		alert(localMediaStream.active);
   }, errorCallback);
-  
+
     function getMode() {
         return Microsoft.CognitiveServices.SpeechRecognition.SpeechRecognitionMode.shortPhrase;
     }
+		function useMic() {
+				return document.getElementById("useMic").checked;
+		}
     function getKey() {
         return "c395ef2363b441d684dc9dccd4156f90";
     }
@@ -46,17 +49,44 @@
     function start() {
         var mode = getMode();
         clearText();
-				setText('Listening...');
-        client = Microsoft.CognitiveServices.SpeechRecognition.SpeechRecognitionServiceFactory.createMicrophoneClient(
-            mode,
-            getLanguage(),
-            getKey());
-        client.startMicAndRecognition();
-        setTimeout(function () {
-						clearText();
-						setText('Transcribing...');
-            client.endMicAndRecognition();
-        }, 5000);
+
+				if(useMic()){
+					setText('Listening...');
+					client = Microsoft.CognitiveServices.SpeechRecognition.SpeechRecognitionServiceFactory.createMicrophoneClient(
+							mode,
+							getLanguage(),
+							getKey());
+					client.startMicAndRecognition();
+					setTimeout(function () {
+							clearText();
+							setText('Transcribing...');
+							client.endMicAndRecognition();
+					}, 5000);
+				} else {
+					client = Microsoft.CognitiveServices.SpeechRecognition.SpeechRecognitionServiceFactory.createDataClient(
+							mode,
+							getLanguage(),
+							getKey());
+
+					request = new XMLHttpRequest();
+					request.open(
+							'GET',
+							(mode == Microsoft.CognitiveServices.SpeechRecognition.SpeechRecognitionMode.shortPhrase) ? "whatstheweatherlike.wav" : "batman.wav",
+							true);
+					request.responseType = 'arraybuffer';
+					request.onload = function () {
+							if (request.status !== 200) {
+									setText("unable to receive audio file");
+							} else {
+									client.sendAudio(request.response, request.response.length);
+									setText("sendingAudio");
+							}
+					};
+
+					request.send();
+				}
+
+
         client.onPartialResponseReceived = function (response) {
 						clearText();
             setText(response);
@@ -96,6 +126,10 @@
 </div>
 <table width="100%">
         <tr><td/><td><h1>Interact!</h1></td></tr>
+				<tr>
+						<td align="right"/>
+						<td><input id="useMic" type="checkbox">Use Microphone</td>
+				</tr>
         <tr>
             <td />
             <td><button onclick="start()">Listen</button></td>
