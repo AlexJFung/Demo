@@ -20,9 +20,9 @@
     console.log('Permission Rejected', e);
   };
   navigator.getUserMedia({video: false, audio: true}, function(localMediaStream) {
-    var video = document.querySelector('video');
-    video.src = window.URL.createObjectURL(localMediaStream);
-    video.onloadedmetadata = function(e) {
+    //var video = document.querySelector('video');
+    //video.src = window.URL.createObjectURL(localMediaStream);
+    //video.onloadedmetadata = function(e) {
     };
 		console.log(localMediaStream.active);
 		alert(localMediaStream.active);
