@@ -78,8 +78,8 @@
 							true);
 					request.responseType = 'arraybuffer';
 					request.onload = function () {
-							setText(request.status);
-							if (request.status !== 200) {
+							setText(request.readyState);
+							if (request.status == 200) {
 									setText("unable to receive audio file");
 							} else {
 									client.sendAudio(request.response, request.response.length);
