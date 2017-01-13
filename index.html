@@ -52,15 +52,18 @@
 
 				if(useMic()){
 					setText('Listening...');
+					console.log('Initalizing client.');
 					client = Microsoft.CognitiveServices.SpeechRecognition.SpeechRecognitionServiceFactory.createMicrophoneClient(
 							mode,
 							getLanguage(),
 							getKey());
 					client.startMicAndRecognition();
+					console.log('starting Mic Recognition');
 					setTimeout(function () {
 							clearText();
 							setText('Transcribing...');
 							client.endMicAndRecognition();
+							console.log('ending Mic Recognition');
 					}, 5000);
 				} else {
 					client = Microsoft.CognitiveServices.SpeechRecognition.SpeechRecognitionServiceFactory.createDataClient(
@@ -88,10 +91,12 @@
 
 
         client.onPartialResponseReceived = function (response) {
+						console.log("Partial Response Received.");
 						clearText();
             setText(response);
         }
         client.onFinalResponseReceived = function (response) {
+						console.log("Final Response Received");
 						clearText();
             setText(JSON.stringify(response));
         }
