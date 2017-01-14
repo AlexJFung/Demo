@@ -77,7 +77,6 @@
 							(mode == Microsoft.CognitiveServices.SpeechRecognition.SpeechRecognitionMode.shortPhrase) ? "whatstheweatherlike.wav" : "batman.wav",
 							true);
 					request.responseType = 'arraybuffer';
-					request.send();
 					request.onload = function () {
 							setText(request.readyState);
 							if (request.status !== 200) {
