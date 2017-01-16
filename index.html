@@ -40,7 +40,6 @@ recognizer.onresult = function (event) {
 // Start listening...
 recognizer.start();
 </script>
-<script src="https://code.responsivevoice.org/responsivevoice.js"></script>	
 <script src="speech.1.0.0.js" type="text/javascript"></script>
 <script type="text/javascript">
     var client;
@@ -70,10 +69,15 @@ recognizer.start();
 
 				if(useMic()){
 					setText('Listening...');
-					console.log('Initalizing client.');
-  					
+					console.log('Initalizing client.');			
+					
+					//Call MS voice services
+					client = Microsoft.CognitiveServices.SpeechRecognition.SpeechRecognitionServiceFactory.createMicrophoneClient(
+							mode,
+							getLanguage(),
+							getKey());
+								
 					//Open mic permissions
-					/**
 					var errorCallback = function(e) {
      					console.log('Permission Rejected', e);
    					};
@@ -83,13 +87,7 @@ recognizer.start();
      						video.onloadedmetadata = function(e) {
      						};
      					}, errorCallback);
-					**/
 					
-					//Call MS voice services
-					client = Microsoft.CognitiveServices.SpeechRecognition.SpeechRecognitionServiceFactory.createMicrophoneClient(
-							mode,
-							getLanguage(),
-							getKey());
 					client.startMicAndRecognition();
 					console.log('starting Mic Recognition');
 					setTimeout(function () {
