@@ -46,18 +46,6 @@ recognizer.start();
     var client;
     var request;
 
-    var errorCallback = function(e) {
-    console.log('Permission Rejected', e);
-  };
-  navigator.getUserMedia({video: false, audio: true}, function(localMediaStream) {
-    var video = document.querySelector('video');
-    video.src = window.URL.createObjectURL(localMediaStream);
-    video.onloadedmetadata = function(e) {
-    };
-		console.log(localMediaStream.active);
-		alert(localMediaStream.active);
-  }, errorCallback);
-
     function getMode() {
         return Microsoft.CognitiveServices.SpeechRecognition.SpeechRecognitionMode.shortPhrase;
     }
