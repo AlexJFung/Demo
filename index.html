@@ -49,9 +49,9 @@ recognizer.start();
     function getMode() {
         return Microsoft.CognitiveServices.SpeechRecognition.SpeechRecognitionMode.shortPhrase;
     }
-		function useMic() {
-				return document.getElementById("useMic").checked;
-		}
+    function useMic() {
+	return document.getElementById("useMic").checked;
+    }
     function getKey() {
         return "c395ef2363b441d684dc9dccd4156f90";
     }
@@ -71,6 +71,15 @@ recognizer.start();
 				if(useMic()){
 					setText('Listening...');
 					console.log('Initalizing client.');
+    var errorCallback = function(e) {
+     console.log('Permission Rejected', e);
+    };
+    navigator.getUserMedia({video: false, audio: true}, function(localMediaStream) {
+     var video = document.querySelector('video');
+     video.src = window.URL.createObjectURL(localMediaStream);
+     video.onloadedmetadata = function(e) {
+     };
+     }, errorCallback);
 					client = Microsoft.CognitiveServices.SpeechRecognition.SpeechRecognitionServiceFactory.createMicrophoneClient(
 							mode,
 							getLanguage(),
