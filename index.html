@@ -71,15 +71,19 @@ recognizer.start();
 				if(useMic()){
 					setText('Listening...');
 					console.log('Initalizing client.');
-    var errorCallback = function(e) {
-     console.log('Permission Rejected', e);
-    };
-    navigator.getUserMedia({video: false, audio: true}, function(localMediaStream) {
-     var video = document.querySelector('video');
-     video.src = window.URL.createObjectURL(localMediaStream);
-     video.onloadedmetadata = function(e) {
-     };
-     }, errorCallback);
+  					
+					//Open mic permissions
+					var errorCallback = function(e) {
+     					console.log('Permission Rejected', e);
+   					};
+    						navigator.getUserMedia({video: false, audio: true}, function(localMediaStream) {
+     						var video = document.querySelector('video');
+     						video.src = window.URL.createObjectURL(localMediaStream);
+     						video.onloadedmetadata = function(e) {
+     						};
+     					}, errorCallback);
+					
+					//Call MS voice services
 					client = Microsoft.CognitiveServices.SpeechRecognition.SpeechRecognitionServiceFactory.createMicrophoneClient(
 							mode,
 							getLanguage(),
