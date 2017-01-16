@@ -73,6 +73,7 @@ recognizer.start();
 					console.log('Initalizing client.');
   					
 					//Open mic permissions
+					/**
 					var errorCallback = function(e) {
      					console.log('Permission Rejected', e);
    					};
@@ -82,6 +83,7 @@ recognizer.start();
      						video.onloadedmetadata = function(e) {
      						};
      					}, errorCallback);
+					**/
 					
 					//Call MS voice services
 					client = Microsoft.CognitiveServices.SpeechRecognition.SpeechRecognitionServiceFactory.createMicrophoneClient(
